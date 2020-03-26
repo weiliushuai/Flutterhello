@@ -9,6 +9,8 @@ import './switch_demo.dart';
 import './slider_demo.dart';
 import './date_time_demo.dart';
 import './simple_dialog_demo.dart';
+import './alerdialog_demo.dart';
+import './bottom_sheet_demo.dart';
 
 class MaterialComponents extends StatelessWidget {
   @override
@@ -20,8 +22,18 @@ class MaterialComponents extends StatelessWidget {
       
       body: ListView(children: <Widget>[
 
+         Button(
+          title: "BottomSheetDemo",
+          page: BottonSheetDemo(),
+        ),
+
+         Button(
+          title: "AlerDialogDemo",
+          page: AlerDialogDemo(),
+        ),
+
         Button(
-          title: "SimpleDemoDemo",
+          title: "SimpleDialogDemo",
           page: SimpleDialogDemo(),
         ),
 
