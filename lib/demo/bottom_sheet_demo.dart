@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class BottonSheetDemo extends StatefulWidget {
   @override
@@ -6,6 +7,7 @@ class BottonSheetDemo extends StatefulWidget {
 }
 
 class _BottonSheetDemoState extends State<BottonSheetDemo> {
+  String _choice = "Nothing";
   final _bottomSheetScaffold = GlobalKey<ScaffoldState>();
   _openBottonSheet() {
     _bottomSheetScaffold.currentState.showBottomSheet((BuildContext context) {
@@ -31,6 +33,55 @@ class _BottonSheetDemoState extends State<BottonSheetDemo> {
     });
   }
 
+  Future _openModelBottonSheet() async{
+    final option = await showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 200.0,
+            width: double.infinity,
+            child: Column(children: <Widget>[
+              ListTile(
+                title: Text("Option A"),
+                onTap: (){
+                  Navigator.pop(context,"A");
+                },
+              ),
+              ListTile(
+                title: Text("Option B"),
+                 onTap: (){
+                  Navigator.pop(context,"B");
+                },
+              ),
+              ListTile(
+                title: Text("Option C"),
+                 onTap: (){
+                  Navigator.pop(context,"C");
+                },
+              ),
+            ]),
+          );
+        });
+        switch (option) {
+          case "A":
+            setState(() {
+              _choice = "A";
+            });
+            break;
+            case "B":
+            setState(() {
+              _choice = "B";
+            });
+            break;
+            case "C":
+            setState(() {
+              _choice = "C";
+            });
+            break;
+          default:
+        }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,12 +93,18 @@ class _BottonSheetDemoState extends State<BottonSheetDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text("Your choice is $_choice"),
+            SizedBox(height: 16.0,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 FlatButton(
                   child: Text("Open BottomSheet"),
                   onPressed: _openBottonSheet,
+                ),
+                FlatButton(
+                  child: Text("Open MoelBottomSheet"),
+                  onPressed: _openModelBottonSheet,
                 ),
               ],
             ),

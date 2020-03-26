@@ -12,6 +12,7 @@ class _AlerDialogDemoState extends State<AlerDialogDemo> {
   String _choice = "Nothing";
   _openAlerDialog() async {
     final option = await showDialog(
+        barrierDismissible: false,//点击外部弹框不消失
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
