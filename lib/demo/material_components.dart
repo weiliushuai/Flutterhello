@@ -11,6 +11,7 @@ import './date_time_demo.dart';
 import './simple_dialog_demo.dart';
 import './alerdialog_demo.dart';
 import './bottom_sheet_demo.dart';
+import './snacbar_demo.dart';
 
 class MaterialComponents extends StatelessWidget {
   @override
@@ -19,33 +20,32 @@ class MaterialComponents extends StatelessWidget {
       appBar: AppBar(
         title: Text("MaterialComponents"),
       ),
-      
       body: ListView(children: <Widget>[
-
-         Button(
+        Button(
+          title: "SncakBarDemo",
+          page: SnackBarDemo(),
+        ),
+        Button(
           title: "BottomSheetDemo",
           page: BottonSheetDemo(),
         ),
-
-         Button(
+        Button(
           title: "AlerDialogDemo",
           page: AlerDialogDemo(),
         ),
-
         Button(
           title: "SimpleDialogDemo",
           page: SimpleDialogDemo(),
         ),
-
-         Button(
+        Button(
           title: "DateTimeDemo",
           page: DateTimeDemo(),
         ),
-         Button(
+        Button(
           title: "SliderDemo",
           page: SliderDemo(),
         ),
-         Button(
+        Button(
           title: "SwitchDemo",
           page: SwitchDemo(),
         ),
@@ -57,11 +57,11 @@ class MaterialComponents extends StatelessWidget {
           title: "CheckboxDemo",
           page: CheckBoxDemo(),
         ),
-         Button(
+        Button(
           title: "FormDemo",
           page: FortDemo(),
         ),
-         Button(
+        Button(
           title: "PopupMenuButtonDemo",
           page: PopupMenuButtonDemo(),
         ),
@@ -93,9 +93,6 @@ class Button extends StatelessWidget {
         });
   }
 }
-
-
-
 
 class ListItemDemo extends StatelessWidget {
   final String title;
