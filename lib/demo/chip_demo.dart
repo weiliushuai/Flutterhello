@@ -16,17 +16,20 @@ class _ChipDemoState extends State<ChipDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Wrap(//可换行
+            //  mainAxisAlignment: MainAxisAlignment.center,
+            direction: Axis.horizontal,//部件摆放方向，默认为水平方向
+            alignment: WrapAlignment.center,//对其方式
+            textDirection: TextDirection.ltr,
+            spacing: 15.0,//设置间距
+            runSpacing: 8.0,//行间距
               children: <Widget>[
                  Chip(
                   label: Text("History"),
                   elevation: 4.0,
                   labelPadding: EdgeInsets.all(5.0),
                 ),
-                SizedBox(
-                  width: 12,
-                ),
+               
                 Chip(
                   label: Text("History"),
                   backgroundColor: Colors.green,
@@ -35,8 +38,16 @@ class _ChipDemoState extends State<ChipDemo> {
                   elevation: 4.0,
                   labelPadding: EdgeInsets.all(5.0),
                 ),
-                SizedBox(
-                  width: 12,
+              
+                Chip(
+                  label: Text("宁浩"),
+                  avatar: CircleAvatar(
+                      child: Text("皓"),
+                
+                  ),
+                  labelStyle: TextStyle(color: Colors.white),
+                  elevation: 4.0,
+                  labelPadding: EdgeInsets.all(5.0),
                 ),
                 Chip(
                   label: Text("宁浩"),
