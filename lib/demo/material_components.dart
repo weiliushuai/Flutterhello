@@ -14,6 +14,7 @@ import './bottom_sheet_demo.dart';
 import './snacbar_demo.dart';
 import './expamsion_pannal_demo.dart';
 import './chip_demo.dart';
+import './date_table_demo.dart';
 
 class MaterialComponents extends StatelessWidget {
   @override
@@ -23,6 +24,10 @@ class MaterialComponents extends StatelessWidget {
         title: Text("MaterialComponents"),
       ),
       body: ListView(children: <Widget>[
+         Button(
+          title: "DateTableDemo",
+          page: DateTableDemo(),
+        ),
         Button(
           title: "ChipDemo",
           page: ChipDemo(),
