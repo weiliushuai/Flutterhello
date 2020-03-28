@@ -35,7 +35,7 @@ class PostDataSource extends DataTableSource {
         return Comparable.compare(aValue, bValue);
      });
 
-     notifyListeners();
+     notifyListeners();//刷新列表
   }
 }
 
