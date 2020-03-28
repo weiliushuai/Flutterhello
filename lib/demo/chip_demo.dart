@@ -12,6 +12,8 @@ class _ChipDemoState extends State<ChipDemo> {
 
   List<String> _selected = [];
 
+  String _choice = "Orange";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +31,8 @@ class _ChipDemoState extends State<ChipDemo> {
               //   direction: Axis.horizontal, //部件摆放方向，默认为水平方向
               //   alignment: WrapAlignment.center, //对其方式
               //   textDirection: TextDirection.ltr,
-              spacing: 15.0, //设置间距
-              runSpacing: 8.0, //行间距
+              spacing: 5.0, //设置间距
+              runSpacing: 3.0, //行间距
 
               children: <Widget>[
                 Chip(
@@ -38,14 +40,14 @@ class _ChipDemoState extends State<ChipDemo> {
                   elevation: 4.0,
                   labelPadding: EdgeInsets.all(5.0),
                 ),
-                Chip(
-                  label: Text("History"),
-                  backgroundColor: Colors.green,
-                  avatar: Icon(Icons.flag),
-                  labelStyle: TextStyle(color: Colors.white),
-                  elevation: 4.0,
-                  labelPadding: EdgeInsets.all(5.0),
-                ),
+                // Chip(
+                //   label: Text("History"),
+                //   backgroundColor: Colors.green,
+                //   avatar: Icon(Icons.flag),
+                //   labelStyle: TextStyle(color: Colors.white),
+                //   elevation: 4.0,
+                //   labelPadding: EdgeInsets.all(5.0),
+                // ),
                 Chip(
                   label: Text("宁浩"),
                   avatar: CircleAvatar(
@@ -97,7 +99,7 @@ class _ChipDemoState extends State<ChipDemo> {
                 Divider(
                   //分隔符
                   color: Colors.grey,
-                  height: 22.0, //距离上部的距离
+               //   height: 22.0, //距离上部的距离
                   //   indent: 16.0,//左边的缩进
                   endIndent: 16.0, //右边的缩进
                   //   thickness: 0.5,//分割线的高度
@@ -119,7 +121,7 @@ class _ChipDemoState extends State<ChipDemo> {
                     );
                   }).toList(),
                 ),
-                  Divider(
+                Divider(
                   //分隔符
                   color: Colors.grey,
                   height: 22.0, //距离上部的距离
@@ -137,25 +139,49 @@ class _ChipDemoState extends State<ChipDemo> {
                     return FilterChip(
                       label: Text(tag),
                       selected: _selected.contains(tag),
-                      onSelected: (value){
-                          setState(() {
-                            if (_selected.contains(tag)) {
-                              _selected.remove(tag);
-
-                            } else {
-                              _selected.add(tag);
-
-                            }
-                          });
+                      onSelected: (value) {
+                        setState(() {
+                          if (_selected.contains(tag)) {
+                            _selected.remove(tag);
+                          } else {
+                            _selected.add(tag);
+                          }
+                        });
                       },
                     );
                   }).toList(),
                 ),
+                
+                Divider(
+                  //分隔符
+                  color: Colors.grey,
+                  //   indent: 16.0,//左边的缩进
+                  endIndent: 16.0, //右边的缩进
+                  //   thickness: 0.5,//分割线的高度
+                ),
+                Container(
+                  width: double.infinity,
+                  child: Text("ChoiceChip:$_choice"),
+                ),
+                Wrap(
+                  spacing: 12.0,
+                  children: _tag.map((tag) {
+                    return ChoiceChip(
+                      label: Text(tag),
+                      selectedColor: Colors.green,
+                      selected: _choice == tag,
+                      onSelected: (value) {
+                        setState(() {
+                         _choice = tag;
+                        });
+                      },
+                    );
+                  }).toList(),
+                ),
+
               ],
-              
             ),
-           
-              ],
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -163,7 +189,11 @@ class _ChipDemoState extends State<ChipDemo> {
           onPressed: () {
             setState(() {
               _tag = ["Apple", "Banana", "Orange"];
+
               _selected = [];
+
+              _choice = "Orange";
+
             });
           }),
     );
