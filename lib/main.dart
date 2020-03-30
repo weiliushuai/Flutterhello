@@ -10,6 +10,8 @@ import './demo/sliver_demo.dart';
 import './demo/navigator_demo.dart';
 import './demo/form_demo.dart';
 import './demo/material_components.dart';
+import './demo/state/state_management_demo.dart';
+import './demo/state/state_scoped_model_demo.dart';
 
 void main()=> runApp(App());
 
@@ -19,12 +21,14 @@ class App extends StatelessWidget{
     return MaterialApp(
       debugShowCheckedModeBanner: false,
     //  home:Home(),
-     initialRoute: "/mdc",
+     initialRoute: "/scoped",
       routes: {
         "/":(context) => NavigatorDemo(),
         "/about": (context) => PageDemo(title:"Anout"),
         "/form" : (context) => FortDemo(),
-        "/mdc" : (context) => MaterialComponents()
+        "/mdc" : (context) => MaterialComponents(),
+        "/state" : (context) => StateManagementDemo(),
+        "/scoped" : (context) => StateManagementDemo1(),
       },
       theme: ThemeData(
         primarySwatch: Colors.yellow,
