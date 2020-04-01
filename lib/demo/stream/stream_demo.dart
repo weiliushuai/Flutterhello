@@ -39,11 +39,12 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   void initState() {
     super.initState();
     print("Creat a Stream");
-     _streamDemo = StreamController<String>();
+     _streamDemo = StreamController.broadcast();
 
      _sinkDemo = _streamDemo.sink;
     print("Start a listning...");
     _streamSubscription = _streamDemo.stream.listen(onData,onError: onError,onDone: onDone);
+                          _streamDemo.stream.listen(onDataTwo,onError: onError,onDone: onDone);
 
     print("InitState complete");
   }
@@ -79,6 +80,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
   void onData(String data){
     print("$data");
+  }
+
+   void onDataTwo(String data){
+    print("Stream Two Data : $data");
   }
 
   Future<String> fetchData() async{
