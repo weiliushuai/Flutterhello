@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -26,15 +25,29 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
   StreamSubscription _streamSubscription;
 
+  StreamController<String> _streamDemo;
+
+  @override
+  void dispose() {
+    _streamDemo.close();
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
     print("Creat a Stream");
-    Stream<String> _streamDemo = Stream.fromFuture(fetchData());
+     _streamDemo = StreamController<String>();
     print("Start a listning...");
-    _streamSubscription = _streamDemo.listen(onData,onError: onError,onDone: onDone);
+    _streamSubscription = _streamDemo.stream.listen(onData,onError: onError,onDone: onDone);
 
     print("InitState complete");
+  }
+
+  void _addStream() async{
+     print("add stream");
+    String data = await fetchData();
+    _streamDemo.add(data);
   }
 
   void _pauseStream(){
@@ -77,6 +90,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
           mainAxisAlignment:MainAxisAlignment.center,
           children:<Widget>[
             FlatButton(
+              child: Text("add"),
+              onPressed: _addStream,
+            ),
+             FlatButton(
               child: Text("pause"),
               onPressed: _pauseStream,
             ),
