@@ -52,7 +52,9 @@ class _RxDartDemoHomeState extends State<RxDartDemoHome> {
 
   _textFilderSubject = PublishSubject<String>();
 
-  _textFilderSubject.listen((data) => print("$data"));
+  _textFilderSubject
+  .map((item) => "item : $item")
+  .listen((data) => print("$data"));
 
   }
 
