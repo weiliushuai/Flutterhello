@@ -116,6 +116,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "rxdart",
+      "rootUri": "file:///D:/soft/flutter_sdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/rxdart-0.22.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "scoped_model",
       "rootUri": "file:///D:/soft/flutter_sdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/scoped_model-1.0.1",
       "packageUri": "lib/",
@@ -188,7 +194,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-03-30T07:04:55.196356Z",
+  "generated": "2020-04-02T02:27:22.996501Z",
   "generator": "pub",
   "generatorVersion": "2.7.0"
 }
