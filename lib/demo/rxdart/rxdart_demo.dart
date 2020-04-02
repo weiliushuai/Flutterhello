@@ -21,6 +21,9 @@ class RxDartDemoHome extends StatefulWidget {
 }
 
 class _RxDartDemoHomeState extends State<RxDartDemoHome> {
+
+  PublishSubject _textFilderSubject;
+
   @override
   void initState() {
     super.initState();
@@ -33,22 +36,53 @@ class _RxDartDemoHomeState extends State<RxDartDemoHome> {
 //     _observable.listen(print);
 
 //  PublishSubject _subject = PublishSubject<String>();
-  BehaviorSubject _subject = BehaviorSubject<String>();
+//  BehaviorSubject _subject = BehaviorSubject<String>();
+  // ReplaySubject _subject = ReplaySubject<String>(maxSize: 2);//设置了最大接受数据的个数
 
-  _subject.add("hello");
-    _subject.add("hola");
-  _subject.listen((data) => print("Listen 1 : $data"));
+  // _subject.add("hello");
+  //   _subject.add("hola");
+  //   _subject.add("hi");
 
-  _subject.listen((data) => print("Listen 2 :${data.toUpperCase()}"));
+  // _subject.listen((data) => print("Listen 1 : $data"));
+
+  // _subject.listen((data) => print("Listen 2 :${data.toUpperCase()}"));
 
 
-  _subject.close();
+  // _subject.close();
 
+  _textFilderSubject = PublishSubject<String>();
+
+  _textFilderSubject.listen((data) => print("$data"));
+
+  }
+
+  @override
+  void dispose() {
+    _textFilderSubject.close();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Theme(
+      data: Theme.of(context).copyWith(
+        primaryColor:Colors.black
+      ),
+      child: TextField(
+        onChanged: (value){
+          setState(() {
+            _textFilderSubject.add("input: $value");
+          });
+        },
+        onSubmitted: (value){
+          setState(() {
+            _textFilderSubject.add("onSubmitted: $value");
+          });
+        },
+        decoration:InputDecoration(
+          labelText: "Text",
       
+        ),
+      ),
     );
   }
 }
