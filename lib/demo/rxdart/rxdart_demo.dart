@@ -53,8 +53,9 @@ class _RxDartDemoHomeState extends State<RxDartDemoHome> {
   _textFilderSubject = PublishSubject<String>();
 
   _textFilderSubject
-//  .map((item) => "item : $item")
-  .where((item) => item.length > 9)
+  //.map((item) => "item : $item")
+  //.where((item) => item.length > 9)
+  .debounceTime(Duration(seconds:1)) 
   .listen((data) => print("$data"));
 
   }
@@ -73,7 +74,7 @@ class _RxDartDemoHomeState extends State<RxDartDemoHome> {
       child: TextField(
         onChanged: (value){
           setState(() {
-            _textFilderSubject.add("input11: $value");
+            _textFilderSubject.add("input: $value");
           });
         },
         onSubmitted: (value){
