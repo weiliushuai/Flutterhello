@@ -55,7 +55,7 @@ class _RxDartDemoHomeState extends State<RxDartDemoHome> {
   _textFilderSubject
   //.map((item) => "item : $item")
   //.where((item) => item.length > 9)
-  .debounceTime(Duration(seconds:1)) 
+  .debounceTime(Duration(seconds:1))//间隔多少时间 
   .listen((data) => print("$data"));
 
   }
