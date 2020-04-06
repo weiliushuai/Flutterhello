@@ -7,18 +7,18 @@ class CounterHome extends StatelessWidget {
     CounterBloc _counterbloc = CounterProvider.of(context).bloc;
     return Center(
       child: StreamBuilder(
-          initialData: 0,
-          stream: _counterbloc.count,
-          builder: (context, snapshot) {
-            return ActionChip(
-              label: Text("${snapshot.data}"),
-              onPressed: () {
-                //  _counterbloc.log();
-                _counterbloc.counter.add(1);
-              },
-            );
-          },
-          ),
+        initialData: 0,
+        stream: _counterbloc.count,
+        builder: (context, snapshot) {
+          return ActionChip(
+            label: Text("${snapshot.data}"),
+            onPressed: () {
+              //  _counterbloc.log();
+              _counterbloc.counter.add(1);
+            },
+          );
+        },
+      ),
     );
   }
 }
