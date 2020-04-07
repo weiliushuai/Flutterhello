@@ -92,7 +92,7 @@ class _HtmlDemoHomeState extends State<HtmlDemoHome> {
                 backgroundImage: NetworkImage(item.imageUrl),
               ),
             );
-          }).toList()
+          }).toList(),
           );
   
       },
